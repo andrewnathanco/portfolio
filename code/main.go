@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"portfolio/controller/index"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -24,14 +25,14 @@ func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c 
 }
 
 func main() {
+	echo.NotFoundHandler = func(c echo.Context) error {
+		return c.Render(http.StatusNotFound, "404.html", nil)
+	}
+
 	e := echo.New()
 	templates, err := template.ParseGlob("view/*.html")
 	if err != nil {
 		log.Panic("could not parse templates: %w", err)
-	}
-
-	for _, t := range templates.Templates() {
-		fmt.Println(t.Name())
 	}
 
 	e.Renderer = &TemplateRenderer{
@@ -42,12 +43,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.Static("/dist", "./dist")
+	e.Static("/static", "./static")
 
-	e.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index.html", nil)
-	})
-
+	e.GET("/", index.GetIndex)
 	e.GET("/music", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "music.html", nil)
 	})

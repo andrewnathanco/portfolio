@@ -1,3 +1,3 @@
 run:
-	npx tailwindcss -i ./view/input.css -o ./dist/output.css --watch & air
+	npx tailwindcss -i ./view/input.css -o ./static/styles.css --watch & air
 	

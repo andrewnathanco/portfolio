@@ -1,9 +1,53 @@
 <html lang="en">
-    <head>
-        <title>Andrew Nathan</title>
-        <link href="/dist/output.css" rel="stylesheet">
-    </head>
-    <body class="m-4 bg-blue-400">
-        This is the website for Andrew Nathan.
-    </body>
+  <head>
+    <title>Andrew Nathan</title>
+    <link href="/static/styles.css" rel="stylesheet" />
+  </head>
+  <body
+    class="m-8 bg-paris-white-100 flex flex-col justify-center items-center"
+  >
+    <div
+      class="flex flex-col items-center font-extrabold text-scarpa-flow-600 space-y-4 w-96"
+    >
+      <div
+        class="bg-profile-picture bg-cover h-48 w-48 m-4 rounded-full border-4 border-scarpa-flow-600"
+      ></div>
+      <div class="flex space-x-2 items-center text-4xl">
+        <div>Andrew Nathan</div>
+        <img src="/static/svg/eclipse.svg" alt="divider" />
+        <div>24</div>
+      </div>
+
+      <div class="h-1 w-96 rounded-full bg-scarpa-flow-600"></div>
+      <ul class="flex flex-wrap space-x-2 w-full text-lg">
+        {{range .}}
+        <li
+          class="underline underline-offset-2 m-1 decoration-japonica-600 decoration-2 hover:underline-offset-4 hover:cursor-pointer"
+        >
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{end}}
+      </ul>
+
+      <div class="h-1 w-96 rounded-full bg-scarpa-flow-600"></div>
+
+      <div class="flex flex-col space-y-4 text-xl">
+        <div>
+          Hi, my name is Andrew and I'm an engineer, wannabe designer, and
+          musician.
+        </div>
+        <div class="text-japonica-600">
+          Although I'm currently working full time as a Software Engineer, I
+          spend most of my free time working on side projects.
+        </div>
+        <div>
+          I tend to hyper fixate so expect a lot of ideas thrown together in a
+          few weeks.
+        </div>
+        <div class="text-japonica-600">
+          Use the links above to contact me or find out more information.
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
