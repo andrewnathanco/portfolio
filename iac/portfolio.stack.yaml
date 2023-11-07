@@ -1,0 +1,8 @@
+version: "3"
+services:
+  portfolio:
+    image: andyrewco/portfolio:$VERSION
+    environment:
+      - VERSION=$VERSION
+    ports:
+      - "1324:1324"

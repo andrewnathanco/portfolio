@@ -47,8 +47,16 @@ func main() {
 
 	e.GET("/", index.GetIndex)
 	e.GET("/music", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "music.html", nil)
+		return c.Redirect(http.StatusPermanentRedirect, "https://open.spotify.com/artist/4CpIdORYoIiB04WjB6wTNq?si=G-EoIRtSTpyxBigjrmOYYA")
 	})
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.GET("/projects", func(c echo.Context) error {
+		return c.Redirect(http.StatusPermanentRedirect, "https://mural.andrewnathan.net")
+	})
+	
+	e.GET("/blog", func(c echo.Context) error {
+		return c.Redirect(http.StatusPermanentRedirect, "https://joinpickup.com/blog")
+	})
+
+	e.Logger.Fatal(e.Start(":1324"))
 }
